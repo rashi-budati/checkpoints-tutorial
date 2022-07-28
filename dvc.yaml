@@ -1,0 +1,20 @@
+stages:
+  train:
+    cmd: python train.py
+    deps:
+    - data/MNIST
+    - train.py
+    params:
+    - lr
+    - seed
+    - weight_decay
+    outs:
+    - model.pt:
+        checkpoint: true
+    plots:
+    - predictions.json:
+        cache: false
+    live:
+      dvclive:
+        summary: true
+        html: true
